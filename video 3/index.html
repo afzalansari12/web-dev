@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,5 +9,34 @@
 <body>
     hey this is my first website .
     <script src="script.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Car Counter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🚘 Smart Road Car Counter</h1>
+
+    <div class="road">
+        <div id="carContainer"></div>
+        <div class="counter">
+            Cars Counted: <span id="count">0</span>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button onclick="startTraffic()">▶ Start</button>
+        <button onclick="stopTraffic()">⏸ Stop</button>
+        <button onclick="resetCounter()">🔄 Reset</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

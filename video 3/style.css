@@ -1,4 +1,112 @@
-body {
+/* body {
     background-color:firebrick ;
     color:aliceblue
+} */
+
+
+
+
+
+body {
+    background: #dcdcdc;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 450px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+h1 {
+    margin-bottom: 15px;
+}
+
+.road {
+    background: #333;
+    height: 150px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.counter {
+    color: white;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 18px;
+}
+
+.car {
+    width: 50px;
+    height: 25px;
+    background: red;
+    position: absolute;
+    top: 90px;
+    left: -60px;
+    border-radius: 5px;
+    animation: moveCar 5s linear forwards;
+}
+
+.car::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: black;
+    position: absolute;
+    bottom: -5px;
+    left: 5px;
+    border-radius: 50%;
+}
+
+.car::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: black;
+    position: absolute;
+    bottom: -5px;
+    right: 5px;
+    border-radius: 50%;
+}
+
+@keyframes moveCar {
+    from {
+        left: -60px;
+    }
+    to {
+        left: 460px;
+    }
+}
+
+.controls button {
+    padding: 10px 15px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.controls button:nth-child(1) {
+    background: green;
+    color: white;
+}
+
+.controls button:nth-child(2) {
+    background: orange;
+    color: white;
+}
+
+.controls button:nth-child(3) {
+    background: blue;
+    color: white;
 }

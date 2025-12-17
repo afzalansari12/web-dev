@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css boxmodel</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            background-color: brown;
+
+
+        }
+
+        .box1{
+            color: rgb(68, 255, 0);
+            padding: 10px;
+             margin: 34px; /*  margin collapse*/
+            border: 2px solid blue;
+            height: 30px;
+        
+        }
+        
+
+        .box2{
+               color: rgb(214, 226, 43);
+               padding: 10px;
+               margin: 24px;
+               border: 2px solid blue;
+               height: 30px;        
+            }
+    </style>
+</head>
+<body>
+   <div class =" box box1"> I am in the box</div>
+
+   <div class =" box box2"> I am in the box</div>
+
+</body>
+</html>
