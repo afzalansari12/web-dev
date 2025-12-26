@@ -1,1 +1,163 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hand Gesture Calculator by Coding Blocks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            background: #0b0b0b;
+            color: white;
+            font-family: system-ui;
+        }
+
+        #videoBox {
+            flex: 1;
+            background: black;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scaleX(-1);
+        }
+
+        #uiBox {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            background: #111;
+        }
+
+        .value {
+            font-size: 72px;
+            margin: 10px 0;
+        }
+
+        .hint {
+            font-size: 16px;
+            opacity: 0.7;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/ml5@0.12.2/dist/ml5.min.js"></script>
+</head>
+
+<body>
+
+    <div id="videoBox">
+        <video id="video" autoplay muted playsinline></video>
+    </div>
+
+    <div id="uiBox">
+        <div>First Number</div>
+        <div class="value" id="a">–</div>
+
+        <div>Second Number</div>
+        <div class="value" id="b">–</div>
+
+        <div>Result</div>
+        <div class="value" id="result">–</div>
+
+        <div class="hint">
+            Show fingers (0–5)<br>
+            Space → lock first number<br>
+            Enter → add<br>
+            R → reset
+        </div>
+    </div>
+
+    <script>
+        let cb = async () => {
+            const video = document.getElementById("video");
+            const divA = document.getElementById("a");
+            const divB = document.getElementById("b");
+            const result = document.getElementById("result");
+
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            video.srcObject = stream;
+            await video.play();
+
+            const model = await ml5.handpose(video);
+            let predictions = [];
+            model.on("predict", r => predictions = r);
+
+            let A = null;
+            let B = null;
+            let stage = 0;
+
+            function fingerUp(lm, tip, pip) {
+                return lm[tip][1] < lm[pip][1];
+            }
+
+            function countFingers(hand) {
+                const lm = hand.landmarks;
+                let count = 0;
+
+                if (fingerUp(lm, 8, 6)) count++;
+                if (fingerUp(lm, 12, 10)) count++;
+                if (fingerUp(lm, 16, 14)) count++;
+                if (fingerUp(lm, 20, 18)) count++;
+
+                if (lm[4][0] > lm[3][0]) count++;
+
+                return count;
+            }
+
+            function loop() {
+                requestAnimationFrame(loop);
+
+                if (!predictions.length) return;
+
+                const fingers = countFingers(predictions[0]);
+
+                if (stage === 0 && A === null) {
+                    divA.textContent = fingers;
+                }
+
+                if (stage === 1 && B === null) {
+                    divB.textContent = fingers;
+                }
+            }
+
+            loop();
+
+            window.addEventListener("keydown", e => {
+                if (e.code === "Space" && stage === 0) {
+                    A = parseInt(divA.textContent);
+                    stage = 1;
+                }
+
+                if (e.code === "Enter" && stage === 1) {
+                    B = parseInt(divB.textContent);
+                    result.textContent = A + B;
+                }
+
+                if (e.key.toLowerCase() === "r") {
+                    A = B = null;
+                    stage = 0;
+                    divA.textContent = "–";
+                    divB.textContent = "–";
+                    result.textContent = "–";
+                }
+            });
+        }
+
+        cb();
+    </script>
+
+</body>
+
+</html>
