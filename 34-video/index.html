@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 5</title>
+
+    <style>
+
+        /* Reset */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: antiquewhite;
+            font-family: Arial, sans-serif;
+        }
+
+        /* ===== NAVBAR ===== */
+
+        nav{
+            background-color: black;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;   /* center navbar items */
+            gap: 80px;                 /* equal spacing */
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 20px;
+            color: blue;
+            font-weight: bold;
+        }
+
+        /* ===== BOX SECTION ===== */
+
+        .container {
+    display: flex;
+    justify-content: center;   /* center both boxes */
+    gap: 60px;                 /* THIS controls space between boxes */
+    margin: 60px auto;         /* equal left and right margin */
+    max-width: 900px;          /* keeps layout balanced */
+}
+
+
+        .box{
+            width: 350px;
+            height: 180px;
+            background-color: aqua;
+            color: black;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        /* ===== THANK YOU SECTION ===== */
+
+        .cd{
+            margin: 60px;
+            padding: 30px;
+            background-color: rgb(243, 220, 220);
+            color: rgb(71, 33, 33);
+            font-style: italic;
+            border-radius: 8px;
+            font-size: 22px;
+        }
+
+        /* ===== FIXED CIRCLE BUTTON ===== */
+
+        .circle{
+            width: 70px;
+            height: 70px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- BOXES -->
+    <div class="container">
+        <div class="box">
+            Welcome
+        </div>
+
+        <div class="box">
+            How can we help you!
+        </div>
+    </div>
+
+    <!-- THANK YOU SECTION -->
+    <div class="cd"> 
+        Thank you <br>
+        Have a good day!
+    </div>
+
+    <!-- FLOATING BUTTON -->
+    <div class="circle">
+        +
+    </div>
+
+</body>
+</html>
