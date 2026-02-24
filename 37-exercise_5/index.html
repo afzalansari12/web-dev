@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar by Flexbox</title>
+
+    <style>
+       *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+       }
+
+       .container{
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             padding: 23px 50px;
+             background-color: rgb(49, 186, 140);
+       }
+
+       .logo{
+            font-size: 24px;
+            font-weight: bold;
+       }
+
+       .menu ul{
+             display: flex;
+             gap: 34px;
+             list-style: none;
+       }
+
+       .menu li{
+             cursor: pointer;
+             font-weight: 500;
+       }
+
+       .download{
+            text-align: center;
+            margin-top: 50px;
+            font-size: 22px;
+       }
+
+       .download-btn{
+            display: block;
+            margin: 20px auto;
+            padding: 12px 25px;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 244px;
+            text-align: center;
+       }
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="container">
+     <div class="logo">UltraEdit</div>
+
+     <div class="menu">
+       <ul>
+           <li>Resources</li>
+           <li>Pricing</li>
+           <li>About</li>
+           <li>Contact Us</li>
+       </ul>
+     </div>
+    </nav>
+
+    <div class="download">Download for Windows</div>
+
+    <div class="download-btn">Download for Mac and Linux</div>
+
+</body>
+</html>
